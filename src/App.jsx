@@ -1,5 +1,5 @@
-import KathanSystemsResumeWebsite from "./KathanSystemsResumeWebsite";
+import KathanResume from "./KathanResume";
 
 export default function App() {
-  return <KathanSystemsResumeWebsite />;
+  return <KathanResume />;
 }
