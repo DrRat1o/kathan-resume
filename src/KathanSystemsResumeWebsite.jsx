@@ -1,3 +1,5 @@
+import { Phone, ExternalLink } from "lucide-react";
+
 export default function KathanSystemsResumeWebsite() {
   const sections = [
     {
@@ -47,7 +49,7 @@ export default function KathanSystemsResumeWebsite() {
                 <a
                   href="https://finance-tracker-three-gamma.vercel.app"
                   target="_blank"
-                  className="rounded-full border border-stone-300 px-3 py-1.5 text-stone-700 transition-all duration-200 hover:-translate-y-[1px] hover:border-stone-400 hover:bg-stone-100"
+                  className="hover-lift rounded-full border border-stone-300 px-3 py-1.5 text-stone-700 transition-all duration-300 ease-out hover:-translate-y-[2px] hover:border-stone-400 hover:bg-stone-100 hover:shadow-[0_4px_16px_rgba(0,0,0,0.04)]"
                 >
                   live ↗
                 </a>
@@ -55,7 +57,7 @@ export default function KathanSystemsResumeWebsite() {
                 <a
                   href="https://github.com/DrRat1o/Finance-Tracker"
                   target="_blank"
-                  className="rounded-full border border-stone-300 px-3 py-1.5 text-stone-700 transition-all duration-200 hover:-translate-y-[1px] hover:border-stone-400 hover:bg-stone-100"
+                  className="hover-lift rounded-full border border-stone-300 px-3 py-1.5 text-stone-700 transition-all duration-300 ease-out hover:-translate-y-[2px] hover:border-stone-400 hover:bg-stone-100 hover:shadow-[0_4px_16px_rgba(0,0,0,0.04)]"
                 >
                   github ↗
                 </a>
@@ -103,7 +105,7 @@ export default function KathanSystemsResumeWebsite() {
           ].map((idea, idx) => (
             <div
               key={idx}
-              className="border border-stone-200 bg-stone-50/60 p-4 transition-all duration-200 hover:-translate-y-[1px] hover:border-stone-300 hover:bg-stone-50"
+              className="hover-card border border-stone-200 bg-stone-50/60 p-4 transition-all duration-300 ease-out hover:-translate-y-[2px] hover:border-stone-300 hover:bg-stone-50 hover:shadow-[0_6px_24px_rgba(0,0,0,0.04)]"
             >
               <p className="text-[14px] leading-7 text-stone-700">{idea}</p>
             </div>
@@ -132,19 +134,45 @@ export default function KathanSystemsResumeWebsite() {
         }
 
         @media print {
+          html, body {
+            background: white !important;
+            print-color-adjust: exact;
+            -webkit-print-color-adjust: exact;
+          }
+
           body {
-            background: white;
+            margin: 0;
+            padding: 0;
           }
 
           .resume-shell {
-            box-shadow: none !important;
+            max-width: 100% !important;
+            width: 100% !important;
             margin: 0 !important;
+            padding: 0 !important;
+            box-shadow: none !important;
+          }
+
+          a {
+            text-decoration: none !important;
+            color: inherit !important;
+          }
+
+          section,
+          .print-safe {
+            break-inside: avoid;
+            page-break-inside: avoid;
+          }
+
+          .hover-lift,
+          .hover-card {
+            transform: none !important;
           }
         }
       `}</style>
 
       <div className="resume-shell max-w-6xl mx-auto px-6 md:px-10 py-10 md:py-16">
-        <div className="border border-stone-300 bg-[#faf9f6]">
+        <div className="border border-stone-300 bg-[#faf9f6] shadow-[0_10px_40px_rgba(0,0,0,0.04)] transition-shadow duration-500">
           <header className="grid md:grid-cols-[1fr_260px] border-b border-stone-300">
             <div className="px-8 md:px-12 py-10 md:py-12 border-b md:border-b-0 md:border-r border-stone-300">
               <div className="mono text-[12px] tracking-wide text-stone-500">
@@ -160,32 +188,6 @@ export default function KathanSystemsResumeWebsite() {
                 understanding how software behaves beneath the surface once
                 different components start interacting.
               </div>
-
-              <div className="mt-8 flex flex-wrap gap-3 mono text-[12px]">
-                <a
-                  href="https://linkedin.com/in/kathan-bhatt"
-                  target="_blank"
-                  className="rounded-full border border-stone-300 px-4 py-2 text-stone-700 transition-all duration-200 hover:-translate-y-[1px] hover:border-stone-400 hover:bg-stone-100"
-                >
-                  linkedin/kathan-bhatt
-                </a>
-
-                <a
-                  href="https://github.com/DrRat1o"
-                  target="_blank"
-                  className="rounded-full border border-stone-300 px-4 py-2 text-stone-700 transition-all duration-200 hover:-translate-y-[1px] hover:border-stone-400 hover:bg-stone-100"
-                >
-                  github/DrRat1o
-                </a>
-
-                <a
-                  href="https://finance-tracker-three-gamma.vercel.app"
-                  target="_blank"
-                  className="rounded-full border border-stone-300 px-4 py-2 text-stone-700 transition-all duration-200 hover:-translate-y-[1px] hover:border-stone-400 hover:bg-stone-100"
-                >
-                  the-ledger ↗
-                </a>
-              </div>
             </div>
 
             <div className="px-8 py-10 md:py-12 flex flex-col justify-between">
@@ -195,8 +197,29 @@ export default function KathanSystemsResumeWebsite() {
                 </div>
 
                 <div className="mt-5 space-y-3">
-                  <ContactField value="kathan.bhatt@gmail.com" />
-                  <ContactField value="+91 98256 31880" />
+                  <ContactField value="kathan.bhatt@gmail.com" icon="mail" />
+
+                  <ContactField value="+91 98256 31880" icon="phone" />
+                </div>
+
+                <div className="mt-8 border-t border-stone-200 pt-5 space-y-4">
+                  <LinkField
+                    href="https://linkedin.com/in/kathan-bhatt"
+                    value="linkedin/kathan-bhatt"
+                    icon="linkedin"
+                  />
+
+                  <LinkField
+                    href="https://github.com/DrRat1o"
+                    value="github/DrRat1o"
+                    icon="github"
+                  />
+
+                  <LinkField
+                    href="https://finance-tracker-three-gamma.vercel.app"
+                    value="the-ledger ↗"
+                    icon="external"
+                  />
                 </div>
               </div>
 
@@ -214,7 +237,7 @@ export default function KathanSystemsResumeWebsite() {
             <div className="px-8 md:px-12 py-10 md:py-12 border-b md:border-b-0 md:border-r border-stone-300">
               <div className="space-y-16">
                 {sections.map((section) => (
-                  <section key={section.id}>
+                  <section key={section.id} className="print-safe scroll-mt-12">
                     <div className="flex items-center gap-4 mb-5">
                       <div className="mono text-[12px] text-stone-400 tracking-wide">
                         {section.id}
@@ -314,9 +337,12 @@ export default function KathanSystemsResumeWebsite() {
                     </h2>
                   </div>
 
-                  <div className="mono text-[12px] leading-7 text-stone-600 border border-stone-200 bg-stone-50/50 p-4 transition-all duration-200 hover:-translate-y-[1px] hover:border-stone-300">
-                    linear algebra · ml fundamentals · distributed systems ·
-                    backend architecture
+                  <div className="hover-card mono text-[12px] leading-7 text-stone-600 border border-stone-200 bg-stone-50/50 p-4 transition-all duration-300 ease-out hover:-translate-y-[2px] hover:border-stone-300 hover:shadow-[0_6px_24px_rgba(0,0,0,0.04)]">
+                    linux & developer tooling · networking fundamentals ·
+                    postgresql & database internals · linear algebra ·
+                    probability & statistics · systems design fundamentals ·
+                    distributed systems · backend architecture · ml fundamentals
+                    · computational modeling
                   </div>
                 </section>
               </div>
@@ -336,21 +362,73 @@ export default function KathanSystemsResumeWebsite() {
   );
 }
 
-function ContactField({ value }) {
+function ContactField({ value, icon }) {
   const copy = () => navigator.clipboard.writeText(value);
 
   return (
-    <div className="group flex items-center gap-2 mono text-[12px] text-stone-600">
-      <span>{value}</span>
+    <div className="group flex items-center gap-3">
+      <div className="mono w-[14px] text-center text-[12px] text-stone-400 flex-shrink-0">
+        <ContactIcon type={icon} />
+      </div>
+
+      <span className="mono text-[12px] text-stone-600">{value}</span>
 
       <button
         onClick={copy}
-        className="opacity-0 group-hover:opacity-100 transition text-stone-400 hover:text-green-700"
+        className="opacity-0 group-hover:opacity-100 transition-all duration-200 text-stone-400 hover:text-green-700 hover:scale-110"
       >
         ⧉
       </button>
     </div>
   );
+}
+
+function LinkField({ href, value, icon }) {
+  return (
+    <a
+      href={href}
+      target="_blank"
+      rel="noreferrer"
+      className="group flex items-center gap-3"
+    >
+      <div className="mono w-[14px] text-center text-[12px] text-stone-400 flex-shrink-0">
+        <ContactIcon type={icon} />
+      </div>
+
+      <span className="mono text-[12px] text-stone-600 transition-colors duration-200 group-hover:text-stone-900">
+        {value}
+      </span>
+    </a>
+  );
+}
+
+function ContactIcon({ type }) {
+  const common =
+    "w-[14px] h-[14px] text-stone-400 group-hover:text-stone-600 transition-colors duration-200 flex-shrink-0";
+  const textIconCommon =
+    "mono text-[11px] leading-none text-stone-400 transition-colors duration-200 group-hover:text-stone-600";
+
+  if (type === "mail") {
+    return (
+      <span className="mono text-[12px] leading-none text-stone-400 transition-colors duration-200 group-hover:text-stone-600">
+        ✉
+      </span>
+    );
+  }
+
+  if (type === "phone") {
+    return <Phone className={common} strokeWidth={1.8} />;
+  }
+
+  if (type === "linkedin") {
+    return <span className={textIconCommon}>in</span>;
+  }
+
+  if (type === "github") {
+    return <span className={textIconCommon}>gh</span>;
+  }
+
+  return <ExternalLink className={common} strokeWidth={1.8} />;
 }
 
 function SkillRow({ label, value }) {
