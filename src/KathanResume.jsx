@@ -1,5 +1,8 @@
 import { Phone, ExternalLink, Copy, Check } from "lucide-react";
 import { useState } from "react";
+import { QRCodeSVG } from "qrcode.react";
+
+const SITE_URL = "https://kathan-resume.vercel.app";
 
 // ── data ────────────────────────────────────────────────────────────────────
 
@@ -78,6 +81,27 @@ export default function KathanResume() {
                   value="the-ledger ↗"
                   icon="external"
                 />
+              </div>
+
+              {/* QR code — visible on print, subtle on screen */}
+              <div className="border-t border-stone-200 pt-5">
+                <p className="mono text-[10px] tracking-widest uppercase text-stone-400 mb-3">
+                  interactive version
+                </p>
+                <a
+                  href={SITE_URL}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="block w-fit"
+                >
+                  <QRCodeSVG
+                    value={SITE_URL}
+                    size={72}
+                    bgColor="transparent"
+                    fgColor="#78716c"
+                    level="M"
+                  />
+                </a>
               </div>
             </div>
           </header>
